@@ -310,9 +310,9 @@ fieldset[disabled] .btn-xl.active {
 header {
     text-align: center;
     color: #fff;
-    background-attachment: scroll;
-    background-color: rgba(20, 20, 20, 0.6);
-    /*background-image: url(../img/header-bg.jpg);*/
+    /*background-attachment: scroll;*/
+    /*background-color: rgba(20, 20, 20, 0.6);*/
+    background-image: url(../video/clwdevbg1.jpg);
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
@@ -321,11 +321,7 @@ header {
     -o-background-size: cover;
 }
 #bg-video {
-    /*z-index: -1;*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*min-width: 100%;*/
+    display: none;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -344,7 +340,7 @@ header {
     -ms-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
 
-    /*background: url(bkg.jpg) no-repeat;*/
+    background-image: url(../video/clwdevbg1.jpg);
     background-size: cover;
 }
 
@@ -371,9 +367,18 @@ header .intro-text .intro-heading {
 }
 
 @media(min-width:768px) {
+
+    #bg-video {
+        display: block;
+    }
+
+    header {
+        background-image: none;
+    }
+
     header .intro-text {
-        padding-top: 300px;
-        padding-bottom: 200px;
+        padding-top: 365px;
+        padding-bottom: 250px;
     }
 
     header .intro-text .intro-lead-in {

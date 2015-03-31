@@ -4,7 +4,7 @@ url: https://clwdev.github.io
 # Site settings
 title: Clearwater Development
 email: support@tuidev.com
-description: ""
+description: "Drupal development for the travel industry."
 
 # Color settings (hex-codes without the leading hash-tag)
 color:
@@ -13,38 +13,40 @@ color:
   secondary-dark: 0D6B93
 
 # Team names, titles and social links
-#people:
-#- name: Kay Garland
-#  pic: 1
-#  position: Lead Designer
+people:
+#- name: Heath Dutton
+#  gravatar: http://www.gravatar.com/avatar/150a567c1af6bcdecc0773dc04ae098c.png
+#  position: Senior Developer / CSM
+#  location: Tampa
 #  social:
-#    - title: twitter
-#      url: #
-#    - title: facebook
-#      url: #
-#    - title: stack-overflow
-#      url: #
-#
-#- name: Larry Parker
-#  pic: 2
-#  position: Lead Marketer
-#  social:
-#    - title: twitter
-#      url: #
-#    - title: facebook
-#      url: #
 #    - title: linkedin
+#      url: https://www.linkedin.com/in/heathdutton
+#    - title: drupal
+#      url: https://www.drupal.org/u/heathdutton
+#    - title: github
+#      url: https://github.com/heathdutton
+#- name: Larry Parker
+#  gravatar: 2
+#  position: Lead Marketer
+#  location: Tampa
+#  social:
+#    - title: linkedin
+#      url: #
+#    - title: drupal
+#      url: #
+#    - title: github
 #      url: #
 #
 #- name: Diana Petersen
-#  pic: 3
+#  gravatar: 3
 #  position: Lead Developer
+#  location: Tampa
 #  social:
-#    - title: twitter
+#    - title: linkedin
 #      url: #
-#    - title: facebook
+#    - title: drupal
 #      url: #
-#    - title: google-plus
+#    - title: github
 #      url: #
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
