@@ -263,6 +263,7 @@ fieldset[disabled] .btn-xl.active {
     }
 
     .navbar-default .navbar-brand,
+    .navbar-default .navbar-brand svg,
     .navbar-default .navbar-brand img {
         font-size: 2em;
         -webkit-transition: all .3s;
@@ -270,10 +271,11 @@ fieldset[disabled] .btn-xl.active {
         transition: all .3s;
     }
 
+    .navbar-default .navbar-brand svg,
     .navbar-default .navbar-brand img {
         margin-right: -220px;
         max-width: 300px;
-        max-height: 63px;
+        max-height: 62px;
         margin-top: -6px;
     }
 
@@ -294,6 +296,7 @@ fieldset[disabled] .btn-xl.active {
     .navbar-default.navbar-shrink .navbar-brand {
         font-size: 1.5em;
     }
+    .navbar-default.navbar-shrink .navbar-brand svg,
     .navbar-default.navbar-shrink .navbar-brand img {
         max-height: 49px;
         margin-top: 6px;
