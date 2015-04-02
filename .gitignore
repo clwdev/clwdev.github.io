@@ -38,3 +38,4 @@ Icon
 
 # PHPStorm files
 .idea
+.idea/*
