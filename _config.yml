@@ -36,6 +36,20 @@ people:
       url: https://www.drupal.org/u/scott-shipman
     - title: anchor	
       url: http://ibuilddrupalsites.com/
+
+- name: Jordan Schinella
+  gravatar: https://s.gravatar.com/avatar/87680c18bc023fcb6bf254daa68abb6d?s=80
+  position: Security Guy / Developer
+  location: Tampa
+  social:
+   - title: linkedin
+     url: http://www.linkedin.com/in/jordanschinella
+   - title: anchor
+     url: http://vectorcyberdefense.com
+   - title: anchor
+     url: http://vector.solutions
+
+
 #
 #- name: Diana Petersen
 #  gravatar: 3
