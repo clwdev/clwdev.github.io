@@ -14,28 +14,28 @@ color:
 
 # Team names, titles and social links
 people:
-#- name: Heath Dutton
-#  gravatar: http://www.gravatar.com/avatar/150a567c1af6bcdecc0773dc04ae098c.png
-#  position: Senior Developer / CSM
-#  location: Tampa
-#  social:
-#    - title: linkedin
-#      url: https://www.linkedin.com/in/heathdutton
-#    - title: drupal
-#      url: https://www.drupal.org/u/heathdutton
-#    - title: github
-#      url: https://github.com/heathdutton
-#- name: Larry Parker
-#  gravatar: 2
-#  position: Lead Marketer
-#  location: Tampa
-#  social:
-#    - title: linkedin
-#      url: #
-#    - title: drupal
-#      url: #
-#    - title: github
-#      url: #
+- name: Heath Dutton
+  gravatar: http://www.gravatar.com/avatar/150a567c1af6bcdecc0773dc04ae098c.png
+  position: Senior Developer / CSM
+  location: Tampa
+  social:
+    - title: linkedin
+      url: https://www.linkedin.com/in/heathdutton
+    - title: drupal
+      url: https://www.drupal.org/u/heathdutton
+    - title: github
+      url: https://github.com/heathdutton
+- name: Scott Shipman
+  gravatar: http://www.gravatar.com/avatar/ac6c5ddb4dbfa966a6a7dd63c14d5f81.png
+  position: Senior Developmer / CSM
+  location: Dunedin
+  social:
+    - title: linkedin
+      url: https://www.linkedin.com/in/kscottshipman
+    - title: drupal
+      url: https://www.drupal.org/u/scott-shipman
+    - title: anchor	
+      url: http://ibuilddrupalsites.com/
 #
 #- name: Diana Petersen
 #  gravatar: 3
