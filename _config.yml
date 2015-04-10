@@ -4,7 +4,7 @@ url: https://clwdev.github.io
 # Site settings
 title: Clearwater Development
 email: support@tuidev.com
-description: "Drupal development for the travel industry."
+description: "Drupal Development for the Travel Industry."
 
 # Color settings (hex-codes without the leading hash-tag)
 color:
@@ -25,9 +25,20 @@ people:
       url: https://www.drupal.org/u/heathdutton
     - title: github
       url: https://github.com/heathdutton
+- name: Jeff Hartman
+  gravatar: http://www.gravatar.com/avatar/8f2c1dac2cb0cf90cf5f08a1810073ca.png
+  position: Senior Developer
+  location: Chicago
+  social:
+    - title: linkedin
+      url: https://www.linkedin.com/in/jeffhartman
+    - title: drupal
+      url: https://www.drupal.org/u/jeff.hartman
+    - title: github
+      url: https://github.com/jeffhartman
 - name: Scott Shipman
   gravatar: http://www.gravatar.com/avatar/ac6c5ddb4dbfa966a6a7dd63c14d5f81.png
-  position: Senior Developmer / CSM
+  position: Senior Developer / CSM
   location: Dunedin
   social:
     - title: linkedin
@@ -36,7 +47,15 @@ people:
       url: https://www.drupal.org/u/scott-shipman
     - title: anchor	
       url: http://ibuilddrupalsites.com/
-
+- name: Jeff George
+  gravatar: http://www.gravatar.com/avatar/f3b7a506207021e3d78e3a41f6c3ff20.png
+  position: Senior Developer / Software HAZMAT Technician / CSM
+  location: Tampa
+  social:
+    - title: drupal
+      url: https://www.drupal.org/u/jeff.george
+    - title: github	
+      url: https://github.com/jeffgeorge
 - name: Jordan Schinella
   gravatar: http://www.gravatar.com/avatar/87680c18bc023fcb6bf254daa68abb6d.png
   position: Security Specialist / Developer
@@ -48,7 +67,15 @@ people:
      url: http://vectorcyberdefense.com
    - title: anchor
      url: http://vector.solutions
-
+- name: John Jennings
+  gravatar: http://www.gravatar.com/avatar/5c0061a50202fe333a839e230bec9bc6.png
+  position: Front-End Specialist / Developer
+  location: Tampa
+  social:
+    - title: linkedin
+      url: https://www.linkedin.com/in/jcjconnect
+    - title: github	
+      url: https://github.com/thatracerguy
 
 #
 #- name: Diana Petersen
