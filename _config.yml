@@ -49,7 +49,7 @@ people:
       url: http://ibuilddrupalsites.com/
 - name: Jeff George
   gravatar: http://www.gravatar.com/avatar/f3b7a506207021e3d78e3a41f6c3ff20.png
-  position: Senior Developer / CSM / Software HAZMAT Technician
+  position: Senior Developer / Software HAZMAT Technician / CSM
   location: Tampa
   social:
     - title: drupal
@@ -67,6 +67,13 @@ people:
      url: http://vectorcyberdefense.com
    - title: anchor
      url: http://vector.solutions
+- name: John Jennings
+  gravatar: http://www.gravatar.com/avatar/5c0061a50202fe333a839e230bec9bc6.png
+  position: Front-End Specialist / Developer
+  location: Tampa
+  social:
+    - title: github	
+      url: https://github.com/thatracerguy
 
 #
 #- name: Diana Petersen
