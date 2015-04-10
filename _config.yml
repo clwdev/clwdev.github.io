@@ -72,6 +72,8 @@ people:
   position: Front-End Specialist / Developer
   location: Tampa
   social:
+    - title: linkedin
+      url: https://www.linkedin.com/in/jcjconnect
     - title: github	
       url: https://github.com/thatracerguy
 
