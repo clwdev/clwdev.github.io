@@ -25,6 +25,17 @@ people:
       url: https://www.drupal.org/u/heathdutton
     - title: github
       url: https://github.com/heathdutton
+- name: Jeff Hartman
+  gravatar: http://www.gravatar.com/avatar/150a567c1af6bcdecc0773dc04ae098c.png
+  position: Senior Developer
+  location: Chicago
+  social:
+    - title: linkedin
+      url: https://www.linkedin.com/in/jeffhartman
+    - title: drupal
+      url: https://www.drupal.org/u/jeff.hartman
+    - title: github
+      url: https://github.com/jeffhartman
 - name: Scott Shipman
   gravatar: http://www.gravatar.com/avatar/ac6c5ddb4dbfa966a6a7dd63c14d5f81.png
   position: Senior Developer / CSM
