@@ -366,6 +366,7 @@ header .intro-text .intro-heading {
 
     #bg-video {
         display: block;
+        width: 768px;
     }
 
     header {
