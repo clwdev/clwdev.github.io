@@ -183,8 +183,10 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .navbar-brand img {
-    margin-right: -220px;
-    max-height: 49px;
+    margin-right: -208px;
+    margin-left: 6px;
+    max-height: 43px;
+    max-width: 208px;
     margin-top: 6px;
 }
 
@@ -249,6 +251,7 @@ fieldset[disabled] .btn-xl.active {
 
 @media(min-width:768px) {
     .navbar-default {
+        font-size: 12px;
         padding: 25px 0;
         border: 0;
         background-color: rgba(22, 22, 22, 0);
@@ -273,7 +276,8 @@ fieldset[disabled] .btn-xl.active {
 
     .navbar-default .navbar-brand svg,
     .navbar-default .navbar-brand img {
-        margin-right: -220px;
+        margin-right: -300px;
+        margin-left: 0px;
         max-width: 300px;
         max-height: 62px;
         margin-top: -6px;
@@ -299,6 +303,7 @@ fieldset[disabled] .btn-xl.active {
     .navbar-default.navbar-shrink .navbar-brand svg,
     .navbar-default.navbar-shrink .navbar-brand img {
         max-height: 49px;
+        max-width: 237px;
         margin-top: 6px;
     }
 }
@@ -655,6 +660,10 @@ section h3.section-subheading {
 }
 
 @media(min-width:992px) {
+    .navbar-default {
+        font-size: 15px;
+    }
+
     .timeline>li {
         min-height: 150px;
     }
