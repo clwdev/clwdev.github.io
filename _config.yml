@@ -45,6 +45,13 @@ people:
       url: https://www.drupal.org/u/jeff.george
     - title: github	
       url: https://github.com/jeffgeorge
+- name: Otto Kirby
+  gravatar: https://media.licdn.com/mpr/mpr/shrink_200_200/p/7/000/250/173/1f01459.jpg
+  position: Scrum Master
+  location: Clearwater
+  social:
+    - title: linkedin
+      url: https://www.linkedin.com/in/ottokirby
 - name: Scott Shipman
   gravatar: http://www.gravatar.com/avatar/ac6c5ddb4dbfa966a6a7dd63c14d5f81.png
   position: Senior Developer / CSM
@@ -78,19 +85,6 @@ people:
       url: https://www.drupal.org/u/thatracerguy
     - title: github
       url: https://github.com/thatracerguy
-
-#
-#- name: Diana Petersen
-#  gravatar: 3
-#  position: Lead Developer
-#  location: Tampa
-#  social:
-#    - title: linkedin
-#      url: #
-#    - title: drupal
-#      url: #
-#    - title: github
-#      url: #
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 #social:
