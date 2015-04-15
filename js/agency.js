@@ -35,3 +35,6 @@ $('div.modal').on('show.bs.modal', function() {
 		}
 	}
 });
+
+// Check for video support
+$('body').addClass((Modernizr.video.ogg || (Modernizr.video.h264 && !navigator.userAgent.match(/(iPod|iPhone|iPad)/)) || Modernizr.video.webm) ? 'video-supported' : 'video-not-supported');
