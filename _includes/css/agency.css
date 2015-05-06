@@ -677,6 +677,12 @@ section h3.section-subheading {
         padding: 0 30px 20px 20px;
         text-align: left;
     }
+
+    .drupal-association {
+        float: right;
+        position: relative;
+        top: -14px;
+    }
 }
 
 @media(min-width:992px) {
