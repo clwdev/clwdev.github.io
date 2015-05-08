@@ -1,7 +1,7 @@
 ---
 title: StudentCity
 subtitle: Drupal Site Development
-layout: default
+layout: project
 modal-id: 3
 date: 2015-04-10
 img: studentcity.png

@@ -1,7 +1,7 @@
 ---
 title: TCS World Travel
 subtitle: Drupal Site Development
-layout: default
+layout: project
 modal-id: 2
 date: 2015-04-10
 img: tcsworldtravel.png

@@ -4,7 +4,7 @@ url: https://clwdev.io
 # Site settings
 title: Clearwater Development
 email: support@tuidev.com
-description: "Drupal Development for the Travel Industry."
+description: "Drupal Development for Travel & Hospitality."
 
 # Color settings (hex-codes without the leading hash-tag)
 color:
@@ -107,3 +107,7 @@ people:
 # Build settings
 markdown: kramdown
 permalink: pretty
+
+collections:
+  projects:
+    output: true

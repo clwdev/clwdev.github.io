@@ -1,7 +1,7 @@
 ---
 title: Quark Expeditions
 subtitle: Drupal Site Development
-layout: default
+layout: project
 modal-id: 1
 date: 2015-04-10
 img: quarkexpeditions.png
