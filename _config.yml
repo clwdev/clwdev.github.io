@@ -85,7 +85,17 @@ people:
       url: https://www.drupal.org/u/thatracerguy
     - title: github
       url: https://github.com/thatracerguy
-
+- name: Ahmed Samir
+  gravatar: http://www.gravatar.com/avatar/2ea10f467d4394f7c71cc6a73e9de700.png
+  position: Developer
+  location: Clearwater
+  social:
+    - title: linkedin
+      url: https://www.linkedin.com/in/ahmedsamirali
+    - title: drupal
+      url: https://www.drupal.org/u/ahmed_samir
+    - title: github
+      url: https://github.com/4hmedsamir
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 #social:
 #  - title: twitter
