@@ -74,17 +74,6 @@ people:
      url: https://www.drupal.org/u/jordan-vector
    - title: github
      url: https://github.com/jordanvector
-- name: John Jennings
-  gravatar: http://www.gravatar.com/avatar/5c0061a50202fe333a839e230bec9bc6.png
-  position: Front-End Specialist / Developer
-  location: Tampa
-  social:
-    - title: linkedin
-      url: https://www.linkedin.com/in/jcjconnect
-    - title: drupal
-      url: https://www.drupal.org/u/thatracerguy
-    - title: github
-      url: https://github.com/thatracerguy
 - name: Ahmed Samir
   gravatar: http://www.gravatar.com/avatar/2ea10f467d4394f7c71cc6a73e9de700.png
   position: Developer
