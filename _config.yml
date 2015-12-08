@@ -85,6 +85,17 @@ people:
       url: https://www.drupal.org/u/ahmed_samir
     - title: github
       url: https://github.com/4hmedsamir
+- name: Mike Keilty
+  gravatar: http://www.gravatar.com/avatar/44274cd3d03c8e9087dd5d3a6044ea01.png
+  position: Developer
+  location: Clearwater
+  social:
+    - title: linkedin
+      url: https://www.linkedin.com/in/michael-keilty-194b2210
+    - title: github
+      url: https://github.com/mikekeilty
+    - title: anchor
+      url: http://mikekeilty.com/
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 #social:
 #  - title: twitter
