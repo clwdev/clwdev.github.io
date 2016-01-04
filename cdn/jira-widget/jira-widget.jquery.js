@@ -870,17 +870,17 @@ if (typeof window.jQuery != 'undefined' &&
                 '-khtml-opacity: 0;' +
                 'opacity: 0;',
             transition_fast =
-              '-webkit-transition: all 400ms ease-in-out;' +
-                '-moz-transition: all 400ms ease-in-out;' +
-                '-ms-transition: all 400ms ease-in-out;' +
-                '-o-transition: all 400ms ease-in-out;' +
-                'transition: all 400ms ease-in-out;',
+              '-webkit-transition: all 200ms ease-in-out;' +
+                '-moz-transition: all 200ms ease-in-out;' +
+                '-ms-transition: all 200ms ease-in-out;' +
+                '-o-transition: all 200ms ease-in-out;' +
+                'transition: all 200ms ease-in-out;',
             transition_slow =
-              '-webkit-transition: background-color 3000ms ease-in-out;' +
-                '-moz-transition: background-color 3000ms ease-in-out;' +
-                '-ms-transition: background-color 3000ms ease-in-out;' +
-                '-o-transition: background-color 3000ms ease-in-out;' +
-                'transition: background-color 3000ms ease-in-out;',
+              '-webkit-transition: background-color 2000ms ease-in-out;' +
+                '-moz-transition: background-color 2000ms ease-in-out;' +
+                '-ms-transition: background-color 2000ms ease-in-out;' +
+                '-o-transition: background-color 2000ms ease-in-out;' +
+                'transition: background-color 2000ms ease-in-out;',
             styles =
               '#' + markup_id +
                 '{' +
