@@ -921,10 +921,10 @@ if (typeof window.jQuery != 'undefined' &&
                 'background-color: rgba(60, 60, 60, 0.5);' +
                 transition_slow +
                 '}' +
-                '#' + markup_id + '.subtle:hover' +
+                '#' + markup_id + '.subtle:hover ' +
                 '{' +
-                'background-color: rgba(60, 60, 60, 1);'
-                transition_slow +
+                'background-color: rgba(60, 60, 60, 1);' +
+                transition_fast +
                 '}' +
                 '#' + markup_id + ' .jira_widget_button' +
                 '{' +
