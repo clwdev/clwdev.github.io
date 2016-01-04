@@ -918,7 +918,7 @@ if (typeof window.jQuery != 'undefined' &&
                 '#' + markup_id + '.subtle' +
                 '{' +
                 'background-color: #3C3C3C;' +
-                'background-color: rgba(60, 60, 60, 0.5);'
+                'background-color: rgba(60, 60, 60, 0.5);' +
                 transition_slow +
                 '}' +
                 '#' + markup_id + '.subtle:hover' +
