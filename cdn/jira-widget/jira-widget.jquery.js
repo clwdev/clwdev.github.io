@@ -665,371 +665,382 @@ if (typeof window.jQuery != 'undefined' &&
           if (data && data.ip){
             // IP has been retrieved
             user_ip = data.ip;
+            deploy();
           }
         });
-      }
-      if (user_ip){
-        // Ref: goo.gl/VnCivw
-        var office_ips = [
-          '208.117.32.0',    // EDU
-          '208.117.32.1',    // EDU
-          '208.117.32.2',    // EDU
-          '208.117.32.3',    // EDU
-          '208.117.32.4',    // EDU
-          '208.117.32.5',    // EDU
-          '208.117.32.6',    // EDU
-          '208.117.32.7',    // EDU
-          '208.117.32.8',    // EDU
-          '208.117.32.9',    // EDU
-          '208.117.32.10',   // EDU
-          '208.117.32.11',   // EDU
-          '208.117.32.12',   // EDU
-          '208.117.32.13',   // EDU
-          '208.117.32.14',   // EDU
-          '208.117.32.15',   // EDU
-          '208.117.32.16',   // EDU
-          '208.117.32.17',   // EDU
-          '208.117.32.18',   // EDU
-          '208.117.32.19',   // EDU
-          '208.117.32.20',   // EDU
-          '208.117.32.21',   // EDU
-          '208.117.32.22',   // EDU
-          '208.117.32.23',   // EDU
-          '208.117.32.24',   // EDU
-          '66.129.100.131',  // MAR CLW
-          '66.195.251.121',  // MAR CLW
-          '50.78.168.229',   // TCS
-          '68.64.32.243',    // ZEG
-          '68.64.32.244',    // IET
-          '12.252.57.86',    // YMT/TRV
-          '68.64.32.242',    // CWD
-          '184.149.28.19'    // QRK
-        ];
-        if (office_ips.indexOf(user_ip) !== -1){
-          office_found = true;
-          // If the user is in an office, remember for 7 days.
-          $.cookie('jira_widget_ip', user_ip, 7);
-        } else {
-          // If the user is not in an office, do not check their IP again for 1 day.
-          $.cookie('jira_widget_ip', user_ip, 1);
-        }
+      } else {
+        // IP detection is not needed at this time.
+        deploy();
       }
 
-      // Check to see if the user is a Drupal administrator, or if they have been one recently
-      if (collectors_found && (cookie_found || admin_found || office_found || !is_production)) {
+      // Continue deployment after IP test has been made (if required)
+      function deploy(){
 
-        // Establish and/or lengthen the cookie lifespan
-        $.cookie('jira_widget_shown', 'true');
-
-        // Get the issue collectorId for each collector
-        var collectors = jira_widget.collectors,
-          regex = new RegExp("collectorId=([A-Za-z0-9]*)", ["i"]),
-          jira_hooks = [],
-          collectors_markup = '';
-
-        // Include the Zopim chat widget script (almost no modification from original)
-        if (typeof window.$zopim == 'undefined') {
-          // Start of Zopim Live Chat Script
-          (function (d, s) {
-            var z = $zopim = function (c) {
-              z._.push(c)
-            }, $ = z.s =
-                d.createElement(s), e = d.getElementsByTagName(s)[0];
-            z.set = function (o) {
-              z.set.
-                  _.push(o)
-            };
-            z._ = [];
-            z.set._ = [];
-            $.async = !0;
-            $.setAttribute('charset', 'utf-8');
-            $.src = '//v2.zopim.com/?2mHFXIacgPiqEo2S2C1GJHVeQxRqlPeH';
-            z.t = +new Date;
-            $.
-                type = 'text/javascript';
-            e.parentNode.insertBefore($, e)
-          })(document, 'script');
-          // End of Zopim Live Chat Script
-
-          $zopim(function() {
-            // Push the chat into the corner.
-            $zopim.livechat.window.setOffsetHorizontal(0);
-            // Hide the button when we are offline.
-            $zopim.livechat.button.setHideWhenOffline(true);
-            // Hide the button completely
-            $zopim.livechat.button.setOffsetHorizontal(100000);
-            $zopim.livechat.button.setOffsetHorizontalMobile(100000);
-            // Set the button to green when someone is available
-            $zopim.livechat.setOnStatus(function(status){
-              if (status == 'online'){
-                $('#jira_widget_options #chat.jira_widget_button').css({'background-color': '#7FAE0E', 'opacity': 1});
-              } else {
-                $('#jira_widget_options #chat.jira_widget_button').css({'background-color': '#000', 'opacity': .3});
-              }
-            });
-            // Forcibly open chat if we start one with the brand rep.
-            $zopim.livechat.setOnUnreadMsgs(function(number){
-              if (typeof jira_widget.chat_msgs == 'undefined'){
-                jira_widget.chat_msgs = number;
-              }
-              if (typeof jira_widget.chat_msgs != 'undefined' && jira_widget.chat_msgs != number){
-                $zopim.livechat.window.show();
-              }
-            });
-          });
+        // Test the user IP, if provided for a known office.
+        if (user_ip){
+          // Ref: goo.gl/pMxgI4
+          var office_ips = [
+            '208.117.32.0',    // EDU
+            '208.117.32.1',    // EDU
+            '208.117.32.2',    // EDU
+            '208.117.32.3',    // EDU
+            '208.117.32.4',    // EDU
+            '208.117.32.5',    // EDU
+            '208.117.32.6',    // EDU
+            '208.117.32.7',    // EDU
+            '208.117.32.8',    // EDU
+            '208.117.32.9',    // EDU
+            '208.117.32.10',   // EDU
+            '208.117.32.11',   // EDU
+            '208.117.32.12',   // EDU
+            '208.117.32.13',   // EDU
+            '208.117.32.14',   // EDU
+            '208.117.32.15',   // EDU
+            '208.117.32.16',   // EDU
+            '208.117.32.17',   // EDU
+            '208.117.32.18',   // EDU
+            '208.117.32.19',   // EDU
+            '208.117.32.20',   // EDU
+            '208.117.32.21',   // EDU
+            '208.117.32.22',   // EDU
+            '208.117.32.23',   // EDU
+            '208.117.32.24',   // EDU
+            '66.129.100.131',  // MAR CLW
+            '66.195.251.121',  // MAR CLW
+            '50.78.168.229',   // TCS
+            '68.64.32.243',    // ZEG
+            '68.64.32.244',    // IET
+            '12.252.57.86',    // YMT/TRV
+            '68.64.32.242',    // CWD
+            '184.149.28.19'    // QRK
+          ];
+          if (office_ips.indexOf(user_ip) !== -1){
+            office_found = true;
+            // If the user is in an office, remember for 7 days.
+            $.cookie('jira_widget_ip', user_ip, 7);
+          } else {
+            // If the user is not in an office, do not check their IP again for 1 day.
+            $.cookie('jira_widget_ip', user_ip, 1);
+          }
         }
-        collectors.unshift(
-            {
-              name: 'Chat with a Developer',
-              script: '',
-              link: 'javascript:$zopim.livechat.window.show();',
-              description: 'If a developer is on stand-by to help with quick issues or training you can chat with them directly.',
-              color: ''
+
+        // Check to see if the user is a Drupal administrator, or if they have been one recently
+        if (collectors_found && (cookie_found || admin_found || office_found || !is_production)) {
+
+          // Establish and/or lengthen the cookie lifespan
+          $.cookie('jira_widget_shown', 'true');
+
+          // Get the issue collectorId for each collector
+          var collectors = jira_widget.collectors,
+            regex = new RegExp("collectorId=([A-Za-z0-9]*)", ["i"]),
+            jira_hooks = [],
+            collectors_markup = '';
+
+          // Include the Zopim chat widget script (almost no modification from original)
+          if (typeof window.$zopim == 'undefined') {
+            // Start of Zopim Live Chat Script
+            (function (d, s) {
+              var z = $zopim = function (c) {
+                z._.push(c)
+              }, $ = z.s =
+                  d.createElement(s), e = d.getElementsByTagName(s)[0];
+              z.set = function (o) {
+                z.set.
+                    _.push(o)
+              };
+              z._ = [];
+              z.set._ = [];
+              $.async = !0;
+              $.setAttribute('charset', 'utf-8');
+              $.src = '//v2.zopim.com/?2mHFXIacgPiqEo2S2C1GJHVeQxRqlPeH';
+              z.t = +new Date;
+              $.
+                  type = 'text/javascript';
+              e.parentNode.insertBefore($, e)
+            })(document, 'script');
+            // End of Zopim Live Chat Script
+
+            $zopim(function() {
+              // Push the chat into the corner.
+              $zopim.livechat.window.setOffsetHorizontal(0);
+              // Hide the button when we are offline.
+              $zopim.livechat.button.setHideWhenOffline(true);
+              // Hide the button completely
+              $zopim.livechat.button.setOffsetHorizontal(100000);
+              $zopim.livechat.button.setOffsetHorizontalMobile(100000);
+              // Set the button to green when someone is available
+              $zopim.livechat.setOnStatus(function(status){
+                if (status == 'online'){
+                  $('#jira_widget_options #chat.jira_widget_button').css({'background-color': '#7FAE0E', 'opacity': 1});
+                } else {
+                  $('#jira_widget_options #chat.jira_widget_button').css({'background-color': '#000', 'opacity': .3});
+                }
+              });
+              // Forcibly open chat if we start one with the brand rep.
+              $zopim.livechat.setOnUnreadMsgs(function(number){
+                if (typeof jira_widget.chat_msgs == 'undefined'){
+                  jira_widget.chat_msgs = number;
+                }
+                if (typeof jira_widget.chat_msgs != 'undefined' && jira_widget.chat_msgs != number){
+                  $zopim.livechat.window.show();
+                }
+              });
+            });
+          }
+          collectors.unshift(
+              {
+                name: 'Chat with a Developer',
+                script: '',
+                link: 'javascript:$zopim.livechat.window.show();',
+                description: 'If a developer is on stand-by to help with quick issues or training you can chat with them directly.',
+                color: ''
+              }
+          );
+
+          // Loop through collectors, creating markup and jira hooks
+          for (var i = 0; i < collectors.length; i++) {
+
+            // Generate the Jira hook for the upcoming button markup if possible
+            var matches = regex.exec(collectors[i].script);
+            if (matches != null && typeof matches[1] != 'undefined') {
+              collectors[i].collectorId = matches[1];
+              var button_id = 'jira_widget_button_' + collectors[i].collectorId;
+              // Using eval here because Jira doesn't provide a way to target buttons dynamically based on an id of any kind
+              jira_hooks[collectors[i].collectorId] = {
+                triggerFunction: new Function('showCollectorDialog',
+                  '  jQuery("#' + button_id + '").click(function (e) {' +
+                    '    e.preventDefault();' +
+                    '    showCollectorDialog();' +
+                    '  });'
+                )
+              };
             }
-        );
 
-        // Loop through collectors, creating markup and jira hooks
-        for (var i = 0; i < collectors.length; i++) {
-
-          // Generate the Jira hook for the upcoming button markup if possible
-          var matches = regex.exec(collectors[i].script);
-          if (matches != null && typeof matches[1] != 'undefined') {
-            collectors[i].collectorId = matches[1];
-            var button_id = 'jira_widget_button_' + collectors[i].collectorId;
-            // Using eval here because Jira doesn't provide a way to target buttons dynamically based on an id of any kind
-            jira_hooks[collectors[i].collectorId] = {
-              triggerFunction: new Function('showCollectorDialog',
-                '  jQuery("#' + button_id + '").click(function (e) {' +
-                  '    e.preventDefault();' +
-                  '    showCollectorDialog();' +
-                  '  });'
-              )
-            };
-          }
-
-          // Translate name and description if Drupal translation function is available
-          if (typeof Drupal != 'undefined' && typeof Drupal.t == 'function'){
-            collectors[i].name = Drupal.t(collectors[i].name);
-            collectors[i].description = Drupal.t(collectors[i].description);
-          }
-
-          // Add default color if one not provided
-          if (typeof collectors[i].color == 'undefined' || !collectors[i].color) {
-            collectors[i].color = '7F7F7F';
-          }
-
-          // Generate markup for this collector/button
-          var button_style = ' style="background-color: #' + collectors[i].color + ';"',
-            button_title = '',
-            button_target = '',
-            button_href = '#';
-
-          // Generate the title tag, using the description if provided
-          if (collectors[i].description) {
-            button_title = ' title="' + collectors[i].description.replace('"', "'") + '"';
-          }
-
-          // If a link is provided instead of a script, set the target to _blank to open a new tab by default
-          if (collectors[i].link) {
-            button_href = collectors[i].link;
-            button_target = ' target="_blank"';
-          }
-
-          // Join all the markup
-          if (typeof button_id == 'undefined'){
-            var button_id = 'chat';
-          }
-          collectors_markup +=
-            '<a href="' + button_href + '" id="' + button_id + '" class="jira_widget_button"' +
-              button_style + button_title + button_target + '>' +
-              collectors[i].name +
-              '</a>';
-        }
-
-        // Established default styling for the button and modal overlay
-        var
-          markup_id = 'jira_widget',
-          options_id = markup_id + '_options',
-          widget_hide_id = markup_id + '_hide',
-          support_title = 'Support',
-          visible =
-//            '-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";' +
-//            'filter: alpha(opacity=100);' +
-              '-moz-opacity: 1;' +
-              '-khtml-opacity: 1;' +
-              'opacity: 1;',
-          invisible =
-//            '-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";' +
-//            'filter: alpha(opacity=0);' +
-              '-moz-opacity: 0;' +
-              '-khtml-opacity: 0;' +
-              'opacity: 0;',
-          transition_fast =
-            '-webkit-transition: all 400ms ease-in-out;' +
-              '-moz-transition: all 400ms ease-in-out;' +
-              '-ms-transition: all 400ms ease-in-out;' +
-              '-o-transition: all 400ms ease-in-out;' +
-              'transition: all 400ms ease-in-out;',
-          transition_slow =
-            '-webkit-transition: background-color 3000ms ease-in-out;' +
-              '-moz-transition: background-color 3000ms ease-in-out;' +
-              '-ms-transition: background-color 3000ms ease-in-out;' +
-              '-o-transition: background-color 3000ms ease-in-out;' +
-              'transition: background-color 3000ms ease-in-out;',
-          styles =
-            '#' + markup_id +
-              '{' +
-              'background-color: #C90606;' +
-              'border: 0;' +
-              'border-radius: 3px;' +
-              'bottom: 5px;' +
-              'box-shadow: rgba(255,255,255,0.1) 0 1px 0 0 inset,rgba(0,0,0,0.2) 0 1px 1px 0;' +
-              'box-sizing: border-box;' +
-              'color: #fff;' +
-              'display: block;' +
-              'font-family: Arial, sans-serif;' +
-              'font-size: 14px;' +
-              'font-variant: normal;' +
-              'font-weight: bold;' +
-              'min-height: 30px;' +
-              'line-height: 22px;' +
-              'padding: 4px 10px;' +
-              'position: fixed !important;' +
-              'right: 5px;' +
-              'text-shadow: 0 1px 0 rgba(0,0,0,0.3);' +
-              'vertical-align: baseline;' +
-              'white-space: nowrap;' +
-              '-moz-box-sizing: border-box;' +
-              'z-index: 999999 !important;' + // One layer below the overlay of the Jira collector
-              'overflow: hidden;' +
-              invisible +
-              transition_slow +
-              '}' +
-              '#' + markup_id + '.visible' +
-              '{' +
-              visible +
-              transition_fast +
-              '}' +
-              '#' + markup_id + '.subtle' +
-              '{' +
-              'background-color: #3C3C3C;' +
-              transition_slow +
-              '}' +
-              '#' + markup_id + ' .jira_widget_button' +
-              '{' +
-              'position: relative;' +
-              'top: 0px;' +
-              'left: 0px;' +
-              'display: block !important;' +
-              'margin-top: 9px;' +
-              'margin-right: 4px;' +
-              'margin-bottom: 10px;' +
-              'margin-left: 4px;' +
-              'border-radius: 3px;' +
-              'text-decoration: none !important;' +
-              'cursor: pointer !important;' +
-              'color: #fff !important;' +
-              'font-family: Arial, sans-serif !important;' +
-              'font-size: 14px !important;' +
-              'font-variant: normal !important;' +
-              'font-weight: bold !important;' +
-              'line-height: 22px !important;' +
-              'padding: 4px 10px !important;' +
-              'box-shadow: rgba(255,255,255,0.1) 0 1px 0 0 inset,rgba(0,0,0,0.2) 0 1px 1px 0;' +
-              'box-sizing: border-box;' +
-              'text-shadow: 1px 1px 0 rgba(0,0,0,0.5);' +
-              'vertical-align: baseline !important;' +
-              'white-space: nowrap !important;' +
-              'overflow: hidden;' +
-              '}' +
-              '#' + markup_id + ' .jira_widget_button:hover' +
-              '{' +
-              'background-color: #fff !important;' +
-              'color: #000 !important;' +
-              'text-shadow: none;' +
-              '}' +
-              '#' + options_id +
-              '{' +
-              'width: auto;' +
-              'height: auto;' +
-              'max-width: 0px;' +
-              'max-height: 0px;' +
-              'overflow: hidden;' +
-//              'margin-right: 6px;' +
-              invisible +
-              transition_fast +
-              '}' +
-              '#' + widget_hide_id +
-              '{' +
-              'float: right;' +
-              'color: #999;' +
-              'max-width: 0px;' +
-              'max-height: 0px;' +
-              'overflow: visible;' +
-              invisible +
-              transition_fast +
-              '}' +
-              '#' + markup_id + ':hover #' + options_id + ',' +
-              '#' + markup_id + ':hover #' + widget_hide_id +
-              '{' +
-              'max-width: 300px;' +
-              'max-height: 300px;' +
-              visible +
-              transition_fast +
-              '}'
-          ,
-          css = '<style type="text/css">' + styles + '</style>',
-          all_markup =
-            '<div id="' + markup_id + '">' +
-              '<span class="support_title">' +
-                support_title +
-                // Give them the option to hide the widget to "log out" till they log back into the CMS
-                // This will only be needed in production
-                (admin_found || !is_production ? '' : ' &nbsp;<a href="#" id="' + widget_hide_id + '">X</a>') +
-              '</span>' +
-              '<div id="' + options_id + '">' +
-                collectors_markup +
-              '</div>' +
-            '</div>';
-
-        // Add the collector styles and widget markup to the page
-        $('head').append(css);
-        $('body').append(all_markup)
-          .find('#' + markup_id)
-          .each(function () {
-            var t = $(this);
-            setTimeout(function () {
-              t.addClass('visible');
-            }, 200);
-            setTimeout(function () {
-              t.addClass('subtle');
-            }, 1500);
-          })
-          .find('#jira_widget_hide')
-          .click(function(){
-            var confirmation_message = 'If you hide this widget, you must log back in to the CMS, or be in a recognized office for it to be displayed again.';
+            // Translate name and description if Drupal translation function is available
             if (typeof Drupal != 'undefined' && typeof Drupal.t == 'function'){
-              confirmation_message = Drupal.t(confirmation_message);
+              collectors[i].name = Drupal.t(collectors[i].name);
+              collectors[i].description = Drupal.t(collectors[i].description);
             }
-            if (confirm(confirmation_message) == true) {
-              // They do want to close it, hide the markup and don't save the cookie
-              $('#' + markup_id).fadeOut('slow');
-              $.cookie('jira_widget_shown', 'false');
+
+            // Add default color if one not provided
+            if (typeof collectors[i].color == 'undefined' || !collectors[i].color) {
+              collectors[i].color = '7F7F7F';
             }
-          });
 
-        // Establish the Jira button hooks
-        window.ATL_JQ_PAGE_PROPS = $.extend(window.ATL_JQ_PAGE_PROPS, jira_hooks);
+            // Generate markup for this collector/button
+            var button_style = ' style="background-color: #' + collectors[i].color + ';"',
+              button_title = '',
+              button_target = '',
+              button_href = '#';
 
-        // Embed the Jira javascripts
-        for (var k = 0; k < collectors.length; k++) {
-          if (collectors[k].script) {
-            $.ajax({
-              url: collectors[k].script,
-              type: 'get',
-              cache: true,
-              dataType: 'script'
+            // Generate the title tag, using the description if provided
+            if (collectors[i].description) {
+              button_title = ' title="' + collectors[i].description.replace('"', "'") + '"';
+            }
+
+            // If a link is provided instead of a script, set the target to _blank to open a new tab by default
+            if (collectors[i].link) {
+              button_href = collectors[i].link;
+              button_target = ' target="_blank"';
+            }
+
+            // Join all the markup
+            if (typeof button_id == 'undefined'){
+              var button_id = 'chat';
+            }
+            collectors_markup +=
+              '<a href="' + button_href + '" id="' + button_id + '" class="jira_widget_button"' +
+                button_style + button_title + button_target + '>' +
+                collectors[i].name +
+                '</a>';
+          }
+
+          // Established default styling for the button and modal overlay
+          var
+            markup_id = 'jira_widget',
+            options_id = markup_id + '_options',
+            widget_hide_id = markup_id + '_hide',
+            support_title = 'Support',
+            visible =
+                '-moz-opacity: 1;' +
+                '-khtml-opacity: 1;' +
+                'opacity: 1;',
+            invisible =
+                '-moz-opacity: 0;' +
+                '-khtml-opacity: 0;' +
+                'opacity: 0;',
+            transition_fast =
+              '-webkit-transition: all 400ms ease-in-out;' +
+                '-moz-transition: all 400ms ease-in-out;' +
+                '-ms-transition: all 400ms ease-in-out;' +
+                '-o-transition: all 400ms ease-in-out;' +
+                'transition: all 400ms ease-in-out;',
+            transition_slow =
+              '-webkit-transition: background-color 3000ms ease-in-out;' +
+                '-moz-transition: background-color 3000ms ease-in-out;' +
+                '-ms-transition: background-color 3000ms ease-in-out;' +
+                '-o-transition: background-color 3000ms ease-in-out;' +
+                'transition: background-color 3000ms ease-in-out;',
+            styles =
+              '#' + markup_id +
+                '{' +
+                'background-color: #C90606;' +
+                'border: 0;' +
+                'border-radius: 3px;' +
+                'bottom: 5px;' +
+                'box-shadow: rgba(255,255,255,0.1) 0 1px 0 0 inset,rgba(0,0,0,0.2) 0 1px 1px 0;' +
+                'box-sizing: border-box;' +
+                'color: #fff;' +
+                'display: block;' +
+                'font-family: Arial, sans-serif;' +
+                'font-size: 14px;' +
+                'font-variant: normal;' +
+                'font-weight: bold;' +
+                'min-height: 30px;' +
+                'line-height: 22px;' +
+                'padding: 4px 10px;' +
+                'position: fixed !important;' +
+                'right: 5px;' +
+                'text-shadow: 0 1px 0 rgba(0,0,0,0.3);' +
+                'vertical-align: baseline;' +
+                'white-space: nowrap;' +
+                '-moz-box-sizing: border-box;' +
+                'z-index: 999999 !important;' + // One layer below the overlay of the Jira collector
+                'overflow: hidden;' +
+                invisible +
+                transition_slow +
+                '}' +
+                '#' + markup_id + '.visible' +
+                '{' +
+                visible +
+                transition_fast +
+                '}' +
+                '#' + markup_id + '.subtle' +
+                '{' +
+                'background-color: #3C3C3C;' +
+                'background-color: rgba(60, 60, 60, 0.5);'
+                transition_slow +
+                '}' +
+                '#' + markup_id + '.subtle:hover' +
+                '{' +
+                'background-color: rgba(60, 60, 60, 1);'
+                transition_slow +
+                '}' +
+                '#' + markup_id + ' .jira_widget_button' +
+                '{' +
+                'position: relative;' +
+                'top: 0px;' +
+                'left: 0px;' +
+                'display: block !important;' +
+                'margin-top: 9px;' +
+                'margin-right: 4px;' +
+                'margin-bottom: 10px;' +
+                'margin-left: 4px;' +
+                'border-radius: 3px;' +
+                'text-decoration: none !important;' +
+                'cursor: pointer !important;' +
+                'color: #fff !important;' +
+                'font-family: Arial, sans-serif !important;' +
+                'font-size: 14px !important;' +
+                'font-variant: normal !important;' +
+                'font-weight: bold !important;' +
+                'line-height: 22px !important;' +
+                'padding: 4px 10px !important;' +
+                'box-shadow: rgba(255,255,255,0.1) 0 1px 0 0 inset,rgba(0,0,0,0.2) 0 1px 1px 0;' +
+                'box-sizing: border-box;' +
+                'text-shadow: 1px 1px 0 rgba(0,0,0,0.5);' +
+                'vertical-align: baseline !important;' +
+                'white-space: nowrap !important;' +
+                'overflow: hidden;' +
+                '}' +
+                '#' + markup_id + ' .jira_widget_button:hover' +
+                '{' +
+                'background-color: #fff !important;' +
+                'color: #000 !important;' +
+                'text-shadow: none;' +
+                '}' +
+                '#' + options_id +
+                '{' +
+                'width: auto;' +
+                'height: auto;' +
+                'max-width: 0px;' +
+                'max-height: 0px;' +
+                'overflow: hidden;' +
+                invisible +
+                transition_fast +
+                '}' +
+                '#' + widget_hide_id +
+                '{' +
+                'float: right;' +
+                'color: #999;' +
+                'max-width: 0px;' +
+                'max-height: 0px;' +
+                'overflow: visible;' +
+                invisible +
+                transition_fast +
+                '}' +
+                '#' + markup_id + ':hover #' + options_id + ',' +
+                '#' + markup_id + ':hover #' + widget_hide_id +
+                '{' +
+                'max-width: 300px;' +
+                'max-height: 300px;' +
+                visible +
+                transition_fast +
+                '}'
+            ,
+            css = '<style type="text/css">' + styles + '</style>',
+            all_markup =
+              '<div id="' + markup_id + '">' +
+                '<span class="support_title">' +
+                  support_title +
+                  // Give them the option to hide the widget to "log out" till they log back into the CMS
+                  // This will only be needed in production
+                  (admin_found || !is_production ? '' : ' &nbsp;<a href="#" id="' + widget_hide_id + '">X</a>') +
+                '</span>' +
+                '<div id="' + options_id + '">' +
+                  collectors_markup +
+                '</div>' +
+              '</div>';
+
+          // Add the collector styles and widget markup to the page
+          $('head').append(css);
+          $('body').append(all_markup)
+            .find('#' + markup_id)
+            .each(function () {
+              var t = $(this);
+              setTimeout(function () {
+                t.addClass('visible');
+              }, 200);
+              setTimeout(function () {
+                t.addClass('subtle');
+              }, 1500);
+            })
+            .find('#jira_widget_hide')
+            .click(function(){
+              var confirmation_message = 'If you hide this widget, you must log back in to the CMS, or be in a recognized office for it to be displayed again.';
+              if (typeof Drupal != 'undefined' && typeof Drupal.t == 'function'){
+                confirmation_message = Drupal.t(confirmation_message);
+              }
+              if (confirm(confirmation_message) == true) {
+                // They do want to close it, hide the markup and don't save the cookie
+                $('#' + markup_id).fadeOut('slow');
+                $.cookie('jira_widget_shown', 'false');
+              }
             });
+
+          // Establish the Jira button hooks
+          window.ATL_JQ_PAGE_PROPS = $.extend(window.ATL_JQ_PAGE_PROPS, jira_hooks);
+
+          // Embed the Jira javascripts
+          for (var k = 0; k < collectors.length; k++) {
+            if (collectors[k].script) {
+              $.ajax({
+                url: collectors[k].script,
+                type: 'get',
+                cache: true,
+                dataType: 'script'
+              });
+            }
           }
         }
       }
