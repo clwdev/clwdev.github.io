@@ -95,78 +95,37 @@ if (typeof window.jQuery != 'undefined' &&
       // Brightspark CA
       case 'www.brightsparktravel.ca':
         is_production = true;
+      case 'www.brightsparktravel.com':
+        is_production = true;
       case 'dev.brightsparktravel.ca':
       case 'stage.brightsparktravel.ca':
       case 'uat.brightsparktravel.ca':
-      case 'qa.bsca.tuidev.com':
-      case 'dev.bsca.tuidev.com':
-        jira_widget = {
-          collectors: [
-            {
-              name: def.question.name,
-              script: def.root_url + '43fc3efa',
-              description: def.question.description,
-              color: def.question.color
-            },
-            {
-              name: def.bug.name,
-              script: def.root_url + '9e312b3d',
-              description: def.bug.description,
-              color: def.bug.color
-            },
-            {
-              name: def.feature.name,
-              script: def.root_url + '083c9f48',
-              description: def.feature.description,
-              color: def.feature.color
-            },
-            {
-              name: def.feedback.name,
-              script: def.root_url + '274aa51e',
-              description: def.feedback.description,
-              color: def.feedback.color
-            },
-            {
-              name: def.jira.name,
-              script: '',
-              link: def.jira.link,
-              description: def.jira.description,
-              color: ''
-            }
-          ]
-        };
-        break;
-      // Brightspark US
-      case 'www.brightsparktravel.com':
-        is_production = true;
       case 'dev.brightsparktravel.com':
       case 'stage.brightsparktravel.com':
       case 'uat.brightsparktravel.com':
-      case 'qa.bsus.tuidev.com':
-      case 'dev.bsus.tuidev.com':
         jira_widget = {
           collectors: [
             {
               name: def.question.name,
-              script: def.root_url + 'f7b86af5',
+              script: def.root_url + 'f9b08053',
               description: def.question.description,
               color: def.question.color
             },
             {
               name: def.bug.name,
-              script: def.root_url + 'db1dd217',
+              script: def.root_url + 'd20d8e17',
               description: def.bug.description,
               color: def.bug.color
             },
             {
               name: def.feature.name,
-              script: def.root_url + '782d131e',
+              script: def.root_url + '31d9fb24',
               description: def.feature.description,
               color: def.feature.color
             },
             {
               name: def.feedback.name,
-              script: def.root_url + '00923487',
+              script: def.root_url + 'a54a04c9',
               description: def.feedback.description,
               color: def.feedback.color
             },
