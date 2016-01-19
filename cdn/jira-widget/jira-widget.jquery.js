@@ -737,11 +737,8 @@ if (typeof window.jQuery != 'undefined' &&
             '208.117.32.24',   // EDU
             '66.129.100.131',  // MAR CLW
             '66.195.251.121',  // MAR CLW
-<<<<<<< Updated upstream
             '66.195.251.122',  // MAR CLW
-=======
             '66.193.50.2',     // MAR CLW
->>>>>>> Stashed changes
             '50.78.168.229',   // TCS
             '68.64.32.243',    // ZEG
             '68.64.32.244',    // IET
