@@ -953,7 +953,7 @@ if (typeof window.jQuery != 'undefined' &&
                 '{' +
                 'background-color: #fff !important;' +
                 'color: #000 !important;' +
-                // 'text-shadow: none;' +
+                'text-shadow: 1px 1px 0 rgba(0,0,0,0);' +
                 '}' +
                 '#' + options_id +
                 '{' +
