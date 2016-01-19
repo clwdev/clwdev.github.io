@@ -977,7 +977,7 @@ if (typeof window.jQuery != 'undefined' &&
                 '}' +
                 '#' + markup_id + ':hover' +
                 '{' +
-                'max-width: 185px;' +
+                'max-width: 195px;' +
                 transition_slow +
                 '}' +
                 '#' + markup_id + ':hover #' + options_id + ',' +
