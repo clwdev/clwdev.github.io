@@ -4,12 +4,22 @@
  * A simple script to embed multiple Issue Collectors for various brands
  */
 
+// Uncomment below for debugging.
+// window.jira_widget_started = false;
+// jQuery('#jira_widget').remove();
+
 // Check for jQuery and for the configuration object "jira_widget".
 if (typeof window.jQuery != 'undefined' &&
-  typeof window.jira_widget_started != 'boolean') {
+  (typeof window.jira_widget_started != 'boolean' || !window.jira_widget_started)) {
 
   // Prevent double execution with this flag
   window.jira_widget_started = true;
+
+  // By default we use zopim to communicate with developers, but can be disabled for brands specifically.
+  zompim_enabled = true;
+
+  // Location of the widget. Typically on the right, but can be adjusted for brands specifically.
+  position = 'bottom_right';
 
   // Begin jQuery wrapper
   (function ($) {
@@ -429,6 +439,7 @@ if (typeof window.jQuery != 'undefined' &&
       case 'uat.travcoa.com':
       case 'qa.trv.tuidev.com':
       case 'dev.trv.tuidev.com':
+        zompim_enabled = false;
         jira_widget = {
           collectors: [
             {
@@ -474,6 +485,8 @@ if (typeof window.jQuery != 'undefined' &&
       case 'uat.ymtvacations.com':
       case 'qa.ymt.tuidev.com':
       case 'dev.ymt.tuidev.com':
+        zompim_enabled = false;
+        position = 'bottom_left';
         jira_widget = {
           collectors: [
             {
@@ -632,6 +645,64 @@ if (typeof window.jQuery != 'undefined' &&
         deploy();
       }
 
+      function zopim_deploy() {
+        // Include the Zopim chat widget script (almost no modification from original)
+        if (typeof window.$zopim == 'undefined') {
+          // Start of Zopim Live Chat Script
+          (function (d, s) {
+            var z = $zopim = function (c) {
+              z._.push(c)
+            }, $ = z.s =
+                d.createElement(s), e = d.getElementsByTagName(s)[0];
+            z.set = function (o) {
+              z.set._.push(o)
+            };
+            z._ = [];
+            z.set._ = [];
+            $.async = !0;
+            $.setAttribute('charset', 'utf-8');
+            $.src = '//v2.zopim.com/?2mHFXIacgPiqEo2S2C1GJHVeQxRqlPeH';
+            z.t = +new Date;
+            $.type = 'text/javascript';
+            e.parentNode.insertBefore($, e)
+          })(document, 'script');
+          // End of Zopim Live Chat Script
+
+          $zopim(function () {
+            // Push the chat into the corner.
+            $zopim.livechat.window.setOffsetHorizontal(0);
+            // Hide the button when we are offline.
+            $zopim.livechat.button.setHideWhenOffline(true);
+            // Hide the button completely
+            $zopim.livechat.button.setOffsetHorizontal(100000);
+            $zopim.livechat.button.setOffsetHorizontalMobile(100000);
+            // Set the button to green when someone is available
+            $zopim.livechat.setOnStatus(function (status) {
+              if (status == 'online') {
+                $('#jira_widget_options #chat.jira_widget_button').css({
+                  'background-color': '#7FAE0E',
+                  'opacity': 1
+                });
+              } else {
+                $('#jira_widget_options #chat.jira_widget_button').css({
+                  'background-color': '#000',
+                  'opacity': .3
+                });
+              }
+            });
+            // Forcibly open chat if we start one with the brand rep.
+            $zopim.livechat.setOnUnreadMsgs(function (number) {
+              if (typeof jira_widget.chat_msgs == 'undefined') {
+                jira_widget.chat_msgs = number;
+              }
+              if (typeof jira_widget.chat_msgs != 'undefined' && jira_widget.chat_msgs != number) {
+                $zopim.livechat.window.show();
+              }
+            });
+          });
+        }
+      }
+
       // Continue deployment after IP test has been made (if required)
       function deploy(){
 
@@ -666,7 +737,11 @@ if (typeof window.jQuery != 'undefined' &&
             '208.117.32.24',   // EDU
             '66.129.100.131',  // MAR CLW
             '66.195.251.121',  // MAR CLW
+<<<<<<< Updated upstream
             '66.195.251.122',  // MAR CLW
+=======
+            '66.193.50.2',     // MAR CLW
+>>>>>>> Stashed changes
             '50.78.168.229',   // TCS
             '68.64.32.243',    // ZEG
             '68.64.32.244',    // IET
@@ -696,66 +771,21 @@ if (typeof window.jQuery != 'undefined' &&
             jira_hooks = [],
             collectors_markup = '';
 
-          // Include the Zopim chat widget script (almost no modification from original)
-          if (typeof window.$zopim == 'undefined') {
-            // Start of Zopim Live Chat Script
-            (function (d, s) {
-              var z = $zopim = function (c) {
-                z._.push(c)
-              }, $ = z.s =
-                  d.createElement(s), e = d.getElementsByTagName(s)[0];
-              z.set = function (o) {
-                z.set.
-                    _.push(o)
-              };
-              z._ = [];
-              z.set._ = [];
-              $.async = !0;
-              $.setAttribute('charset', 'utf-8');
-              $.src = '//v2.zopim.com/?2mHFXIacgPiqEo2S2C1GJHVeQxRqlPeH';
-              z.t = +new Date;
-              $.
-                  type = 'text/javascript';
-              e.parentNode.insertBefore($, e)
-            })(document, 'script');
-            // End of Zopim Live Chat Script
+          if (zompim_enabled == true) {
+            setTimeout(function(){
+              zopim_deploy();
+            }, 300);
 
-            $zopim(function() {
-              // Push the chat into the corner.
-              $zopim.livechat.window.setOffsetHorizontal(0);
-              // Hide the button when we are offline.
-              $zopim.livechat.button.setHideWhenOffline(true);
-              // Hide the button completely
-              $zopim.livechat.button.setOffsetHorizontal(100000);
-              $zopim.livechat.button.setOffsetHorizontalMobile(100000);
-              // Set the button to green when someone is available
-              $zopim.livechat.setOnStatus(function(status){
-                if (status == 'online'){
-                  $('#jira_widget_options #chat.jira_widget_button').css({'background-color': '#7FAE0E', 'opacity': 1});
-                } else {
-                  $('#jira_widget_options #chat.jira_widget_button').css({'background-color': '#000', 'opacity': .3});
+            collectors.unshift(
+                {
+                  name: 'Chat with a Developer',
+                  script: '',
+                  link: 'javascript:$zopim.livechat.window.show();',
+                  description: 'If a developer is on stand-by to help with quick issues or training you can chat with them directly.',
+                  color: ''
                 }
-              });
-              // Forcibly open chat if we start one with the brand rep.
-              $zopim.livechat.setOnUnreadMsgs(function(number){
-                if (typeof jira_widget.chat_msgs == 'undefined'){
-                  jira_widget.chat_msgs = number;
-                }
-                if (typeof jira_widget.chat_msgs != 'undefined' && jira_widget.chat_msgs != number){
-                  $zopim.livechat.window.show();
-                }
-              });
-            });
+            );
           }
-          collectors.unshift(
-              {
-                name: 'Chat with a Developer',
-                script: '',
-                link: 'javascript:$zopim.livechat.window.show();',
-                description: 'If a developer is on stand-by to help with quick issues or training you can chat with them directly.',
-                color: ''
-              }
-          );
 
           // Loop through collectors, creating markup and jira hooks
           for (var i = 0; i < collectors.length; i++) {
@@ -815,6 +845,15 @@ if (typeof window.jQuery != 'undefined' &&
                 '</a>';
           }
 
+          // Determine styles for location
+          var position_styles = 'bottom: 5px;' +
+              'right: 5px;';
+          switch (position) {
+            case 'bottom_left':
+              position_styles = 'bottom: 5px;' +
+                'left: 5px;';
+          }
+
           // Established default styling for the button and modal overlay
           var
             markup_id = 'jira_widget',
@@ -844,10 +883,10 @@ if (typeof window.jQuery != 'undefined' &&
             styles =
               '#' + markup_id +
                 '{' +
+                'max-width: 78px;' +
                 'background-color: #C90606;' +
                 'border: 0;' +
                 'border-radius: 3px;' +
-                'bottom: 5px;' +
                 'box-shadow: rgba(255,255,255,0.1) 0 1px 0 0 inset,rgba(0,0,0,0.2) 0 1px 1px 0;' +
                 'box-sizing: border-box;' +
                 'color: #fff;' +
@@ -860,7 +899,7 @@ if (typeof window.jQuery != 'undefined' &&
                 'line-height: 22px;' +
                 'padding: 4px 10px;' +
                 'position: fixed !important;' +
-                'right: 5px;' +
+                position_styles +
                 'text-shadow: 0 1px 0 rgba(0,0,0,0.3);' +
                 'vertical-align: baseline;' +
                 'white-space: nowrap;' +
@@ -868,7 +907,7 @@ if (typeof window.jQuery != 'undefined' &&
                 'z-index: 999999 !important;' + // One layer below the overlay of the Jira collector
                 'overflow: hidden;' +
                 invisible +
-                transition_slow +
+                transition_fast +
                 '}' +
                 '#' + markup_id + '.visible' +
                 '{' +
@@ -917,7 +956,7 @@ if (typeof window.jQuery != 'undefined' &&
                 '{' +
                 'background-color: #fff !important;' +
                 'color: #000 !important;' +
-                'text-shadow: none;' +
+                // 'text-shadow: none;' +
                 '}' +
                 '#' + options_id +
                 '{' +
@@ -935,14 +974,19 @@ if (typeof window.jQuery != 'undefined' &&
                 'color: #999;' +
                 'max-width: 0px;' +
                 'max-height: 0px;' +
-                'overflow: visible;' +
+                'overflow: hidden;' +
                 invisible +
                 transition_fast +
+                '}' +
+                '#' + markup_id + ':hover' +
+                '{' +
+                'max-width: 185px;' +
+                transition_slow +
                 '}' +
                 '#' + markup_id + ':hover #' + options_id + ',' +
                 '#' + markup_id + ':hover #' + widget_hide_id +
                 '{' +
-                'max-width: 300px;' +
+                'max-width: 200px;' +
                 'max-height: 300px;' +
                 visible +
                 transition_fast +
@@ -973,19 +1017,13 @@ if (typeof window.jQuery != 'undefined' &&
               }, 200);
               setTimeout(function () {
                 t.addClass('subtle');
-              }, 1500);
+              }, 1000);
             })
             .find('#jira_widget_hide')
             .click(function(){
-              var confirmation_message = 'If you hide this widget, you must log back in to the CMS, or be in a recognized office for it to be displayed again.';
-              if (typeof Drupal != 'undefined' && typeof Drupal.t == 'function'){
-                confirmation_message = Drupal.t(confirmation_message);
-              }
-              if (confirm(confirmation_message) == true) {
-                // They do want to close it, hide the markup and don't save the cookie
-                $('#' + markup_id).fadeOut('slow');
-                $.cookie('jira_widget_shown', 'false');
-              }
+              // Temporarally hide the markup and don't save the cookie
+              $('#' + markup_id).fadeOut('slow');
+              $.cookie('jira_widget_shown', 'false');
             });
 
           // Establish the Jira button hooks
