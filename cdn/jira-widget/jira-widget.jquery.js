@@ -350,6 +350,7 @@ if (typeof window.jQuery != 'undefined' &&
       case 'qa.quark.tuidev.com':
       case 'dev.quark-d7.tuidev.com':
       case 'dev.quark.tuidev.com':
+        zompim_enabled = true;
         jira_widget = {
           collectors: [
             {
@@ -744,7 +745,7 @@ if (typeof window.jQuery != 'undefined' &&
             '68.64.32.244',    // IET
             '12.252.57.86',    // YMT/TRV
             '68.64.32.242',    // CWD
-            '184.149.28.19'    // QRK
+            // '184.149.28.19'    // QRK
           ];
           if (office_ips.indexOf(user_ip) !== -1){
             office_found = true;
