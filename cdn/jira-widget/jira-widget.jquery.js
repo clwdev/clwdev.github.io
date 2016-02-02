@@ -350,7 +350,7 @@ if (typeof window.jQuery != 'undefined' &&
       case 'qa.quark.tuidev.com':
       case 'dev.quark-d7.tuidev.com':
       case 'dev.quark.tuidev.com':
-        zompim_enabled = true;
+        zompim_enabled = false;
         jira_widget = {
           collectors: [
             {
@@ -535,7 +535,7 @@ if (typeof window.jQuery != 'undefined' &&
       case 'dev.zegrahm.com':
       case 'zeg.dev':
       case 'zeg.vm':
-        zompim_enabled = true;
+        zompim_enabled = false;
         jira_widget = {
           collectors: [
             {
