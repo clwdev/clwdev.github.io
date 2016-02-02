@@ -536,6 +536,7 @@ if (typeof window.jQuery != 'undefined' &&
       case 'zeg.dev':
       case 'zeg.vm':
         zompim_enabled = false;
+        position = 'bottom_left';
         jira_widget = {
           collectors: [
             {
