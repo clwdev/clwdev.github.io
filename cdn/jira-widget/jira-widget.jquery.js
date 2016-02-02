@@ -535,6 +535,7 @@ if (typeof window.jQuery != 'undefined' &&
       case 'dev.zegrahm.com':
       case 'zeg.dev':
       case 'zeg.vm':
+        zompim_enabled = true;
         jira_widget = {
           collectors: [
             {
