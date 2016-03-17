@@ -350,6 +350,7 @@ if (typeof window.jQuery != 'undefined' &&
       case 'qa.quark.tuidev.com':
       case 'dev.quark-d7.tuidev.com':
       case 'dev.quark.tuidev.com':
+        position = 'bottom_left';
         zompim_enabled = false;
         jira_widget = {
           collectors: [
