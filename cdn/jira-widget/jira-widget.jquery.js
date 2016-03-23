@@ -303,6 +303,8 @@ if (typeof window.jQuery != 'undefined' &&
       case 'uat.ietravel.com':
       case 'qa.ietravel.tuidev.com':
       case 'dev.ietravel.tuidev.com':
+        zompim_enabled = false;
+        position = 'bottom_left';
         jira_widget = {
           collectors: [
             {
