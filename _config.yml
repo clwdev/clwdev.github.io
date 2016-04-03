@@ -63,17 +63,6 @@ people:
       url: https://www.drupal.org/u/scott-shipman
     - title: anchor	
       url: http://ibuilddrupalsites.com/
-- name: Jordan Schinella
-  gravatar: http://www.gravatar.com/avatar/87680c18bc023fcb6bf254daa68abb6d.png
-  position: Security Specialist / OSCP
-  location: Tampa
-  social:
-   - title: linkedin
-     url: http://www.linkedin.com/in/jordanschinella
-   - title: drupal
-     url: https://www.drupal.org/u/jordan-vector
-   - title: github
-     url: https://github.com/jordanvector
 - name: Ahmed Samir
   gravatar: http://www.gravatar.com/avatar/2ea10f467d4394f7c71cc6a73e9de700.png
   position: Developer
