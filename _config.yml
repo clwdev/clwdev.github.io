@@ -85,6 +85,17 @@ people:
       url: https://github.com/mikekeilty
     - title: anchor
       url: http://mikekeilty.com/
+- name: Christian Stück
+  gravatar: http://www.gravatar.com/avatar/889fd8eb8a8949b7c434846f6ea4521a.png
+  position: Developer
+  location: Clearwater
+  social:
+    - title: linkedin
+      url: https://www.linkedin.com/in/christianstuck
+    - title: drupal
+      url: https://www.drupal.org/u/amanaplan
+    - title: github
+      url: https://github.com/amanaplan
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 #social:
 #  - title: twitter
